@@ -1,7 +1,6 @@
 /* eslint-disable*/
 const path = require('path');
 const webpack = require('webpack');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = (options) => ({
   mode: options.mode,
@@ -15,7 +14,7 @@ module.exports = (options) => ({
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -52,13 +51,8 @@ module.exports = (options) => ({
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
-    extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
-    mainFields: ['browser', 'jsnext:main', 'main'],
-    plugins: [
-      new TsconfigPathsPlugin({
-        configFile: path.resolve(process.cwd(), 'tsconfig.json')
-      })
-    ]
+    extensions: ['.js', '.jsx', '.react.js'],
+    mainFields: ['browser', 'jsnext:main', 'main']
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

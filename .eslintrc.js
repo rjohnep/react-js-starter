@@ -1,16 +1,12 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  parser: 'babel-eslint',
   extends: [
-    'airbnb-typescript',
-    'airbnb-typescript',
+    'airbnb',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/typescript',
     'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript'
+    'plugin:import/warnings'
   ],
-  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
+  plugins: ['react', 'react-hooks'],
   env: {
     jest: true,
     browser: true,
@@ -27,9 +23,6 @@ module.exports = {
   settings: {
     react: {
       version: require('./package.json').dependencies.react
-    },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
     }
   },
   rules: {
@@ -61,6 +54,7 @@ module.exports = {
     'react/jsx-first-prop-new-line': [2, 'multiline'],
     'react/sort-comp': 0,
     'react/destructuring-assignment': 0,
-    'react/jsx-fragments': [2, 'element']
+    'react/jsx-fragments': [2, 'element'],
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }]
   }
 };
